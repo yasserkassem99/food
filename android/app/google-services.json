@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "846637886001",
+    "firebase_url": "https://ajirni-cd18b.firebaseio.com",
+    "project_id": "ajirni-cd18b",
+    "storage_bucket": "ajirni-cd18b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846637886001:android:ff63dbb23e5d3535620310",
+        "android_client_info": {
+          "package_name": "com.helloproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846637886001-bpk1pma1sd85rom7n3k5a42873d09bts.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.helloproject",
+            "certificate_hash": "f8bd24692ecee0777f069afaf30971af23195858"
+          }
+        },
+        {
+          "client_id": "846637886001-u00fha8215btkeqbmc2pdigm6n6tul9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0154vd7IIJKLzo1gAuZV4eEudG93nEXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846637886001-u00fha8215btkeqbmc2pdigm6n6tul9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
