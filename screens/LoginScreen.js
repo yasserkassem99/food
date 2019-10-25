@@ -1,26 +1,39 @@
 import React,{useState} from 'react'
-import {View,StyleSheet,ImageBackground,Dimensions,StatusBar,TextInput,KeyboardAvoidingView,TouchableWithoutFeedback,Keyboard} from "react-native"
+import {View,StyleSheet,ImageBackground,
+        Dimensions,Image,
+        TextInput,KeyboardAvoidingView,
+        TouchableWithoutFeedback,Keyboard} from "react-native"
 import { Button ,Text} from 'native-base';
 import {useDispatch} from "react-redux";
 import {authStart} from "../store/action/authStart"
 
+// constants
+const width = Dimensions.get("window").width
+const height = Dimensions.get("window").height
+
+
 const loginScreen = (props) => {
     const dispatch = useDispatch()
 
-    const [borderColor,setBordercolor]=useState("#fff")
+    const [borderColor,setBordercolor]=useState("transparent")
     const [phoneNumber,setPhoneNumber] = useState("+962")
 
     const login = ()=>{
          dispatch(authStart(phoneNumber))
     }
     return(
-        <>
-       <StatusBar hidden={true} barStyle="light-content"  />
+        
         <KeyboardAvoidingView style={styles.container} >
-        
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <ImageBackground source={require("../assets/login.jpg")} style={{flex:1,width:"100%"}} imageStyle={{opacity:0.8,backgroundColor:"black",position:"absolute",top:0}} >
-        
+      <ImageBackground source={require("../assets/login.jpg")}
+       style={{flex:1,width:"100%",justifyContent:"flex-end",alignItems:"center"}}
+        imageStyle={{opacity:0.8,backgroundColor:"black"}} >
+        <View style={{flex:0.7,justifyContent:"center",alignItems:"center",width:"100%"}}>
+            <View style={styles.textBox}>
+            <Image source={require("../assets/logo.png")} style={styles.img}/>
+            <Text style={{fontSize:27,fontWeight:"700"}}>You Are Welcome</Text>
+            </View>
+        </View>
         <View style={styles.formCont}>
             <TextInput 
             onFocus={()=>setBordercolor("#48DFBE")}
@@ -31,7 +44,7 @@ const loginScreen = (props) => {
             onChangeText={(num)=>setPhoneNumber(num)}
             keyboardType="phone-pad"/>
             <View style={{flex:1,marginTop:10,width:"100%"}}>
-            <Button onPress={()=>login()} block light>
+            <Button style={{borderRadius:3}} onPress={()=>login()} block light>
                 <Text>log in</Text>
             </Button>
             </View>
@@ -39,7 +52,7 @@ const loginScreen = (props) => {
       </ImageBackground>
       </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
-      </>
+      
     )
 };
 
@@ -47,13 +60,25 @@ const loginScreen = (props) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        alignItems:"center",
-        justifyContent:"flex-end",
         
+    },
+    textBox:{
+        flex:0.6,
+        backgroundColor:"#eee",
+        width:"80%",
+        borderRadius:10,
+        elevation:7,
+        opacity:0.85,
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    img:{
+        height:80,
+        width:80,
     },
     formCont:{
         flex:0.3,
-        width:"85%",
+        width:"80%",
         alignItems:"center",
     },
     formInpt:{
@@ -61,6 +86,7 @@ const styles = StyleSheet.create({
         paddingHorizontal:10,
         borderBottomWidth:2,
         backgroundColor:"#fff",
+        borderRadius:3
             }
 })
 

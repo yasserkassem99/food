@@ -1,28 +1,39 @@
 import React,{useEffect} from 'react'
-import { View,Text,StyleSheet,Image } from 'react-native';
+import { View,Text,StyleSheet,Image,TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient'; 
 import {useSelector,useDispatch} from "react-redux"
 const homeScreen = (props) => {
     const isLogged = useSelector(state=>state.authCheck.isLogged)
-    const dispatch= useDispatch()
-     
+    
+    //check for authntication
     useEffect(()=>{
 
         setTimeout(()=>{
             if(isLogged){
-                props.navigation.navigate("Login")
+                props.navigation.navigate("List")
             }else{
-                console.log("hi")
+                props.navigation.navigate("Login")
             }
-        },800)
+        },100)
        
     },[])
    
+
+        const logoHandler = ()=> {
+            if(isLogged){
+                props.navigation.navigate("List")
+            }else{
+                props.navigation.navigate("Login")
+            }
+        }
+
     return(
         <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#c1dfc4','#deecdd']} style={styles.container}>
-            <View style={styles.imgCont}>
+            
+                <TouchableOpacity style={styles.imgCont} onPress={logoHandler}>
                 <Image source={require("../assets/logo.png")} style={styles.img}/>
-            </View>
+                </TouchableOpacity>
+            
 
         </LinearGradient>
     )
